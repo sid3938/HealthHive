@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: django-rest-api
+    env: python
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
+    startCommand: gunicorn <your_project_name>.wsgi:application
+    disk:
+      name: data
+      mountPath: /var/data
